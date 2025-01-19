@@ -1,0 +1,2 @@
+[console_scripts]
+topsis = Topsis_SanatKGupta_102203079.main:main

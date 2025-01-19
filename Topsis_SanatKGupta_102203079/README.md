@@ -1,0 +1,58 @@
+# Topsis-SanatKGupta-102203079
+
+## Project Description
+
+**Topsis-SanatKGupta-102203079** is a Python library that implements the **Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS)** for solving **Multiple Criteria Decision Making (MCDM)** problems. It ranks alternatives based on their proximity to the ideal solution, taking into account various criteria with associated weights and impact directions.
+
+This library can be used for decision-making problems where you have multiple alternatives and criteria, such as selecting the best product based on multiple features or evaluating alternatives in project management.
+
+**Submitted by**: Sanat Kumar Gupta  
+**Roll No**: 102203079  
+**Group**: 3C52  
+## Installation
+
+To install **Topsis-SanatKGupta-102203079**, use the package manager `pip`:
+
+```bash
+pip install Topsis-SanatKGupta-102203079
+```
+## Usage
+```bash
+topsis <csv_filename> <weights_vector> <impacts_vector>
+```
+* csv_filename: Path to your .csv file.
+* weights_vector: A comma-separated list of weights representing the importance of each criterion.
+* impacts_vector: A comma-separated list of signs (+ or -), specifying whether each criterion should be maximized (+) or minimized (-).
+```bash
+topsis sample.csv "0.25,0.25,0.25,0.25" "+,+,-,+"
+```
+## Output
+```bash
+TOPSIS RESULTS
+-----------------------------
+
+    P-Score  Rank
+1  0.534277     3
+2  0.308368     5
+3  0.691632     1
+4  0.534737     2
+5  0.401046     4
+```
+## Code Explanation
+### Input Validation:
+
+The validate_inputs function ensures that the data contains at least three columns, that all numeric values are valid, and that the weights and impacts match the number of criteria.
+### TOPSIS Algorithm:
+
+- Normalization: The criteria values are normalized so that they are comparable by dividing each value by the square root of the sum of squares for that column.
+- Weighting: After normalization, the values are multiplied by the weights to give more importance to certain criteria.
+- Ideal and Negative Ideal Solution: The ideal best and worst values are calculated for each criterion based on whether the criterion is maximized or minimized.
+- Distance Calculation: The Euclidean distance is computed for each alternative's distance from the ideal and negative ideal solutions.
+- Ranking: The Topsis score is calculated as the ratio of the distance from the worst solution to the sum of distances from both the best and worst solutions, and alternatives are ranked accordingly.
+### Important Notes
+- The first row and column of the CSV file are considered headers and indices, respectively, and are removed before processing.
+- Ensure that your CSV file contains only numeric values for the criteria. Categorical data will cause errors during processing.
+- If the input vectors (weights and impacts) contain spaces, enclose them in double quotes (").
+
+## License
+This project is licensed under the MIT License.
